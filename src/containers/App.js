@@ -15,7 +15,8 @@ class App extends Component {
   }
 
   componentDidMount(){
-    fetch('https://pokeapi.co/api/v2/pokemon/')
+    //limit to original 150 for speed
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=150')
       .then(response => response.json())
       .then(pokemon => this.setState({ pokemonList: pokemon.results}))
   }
