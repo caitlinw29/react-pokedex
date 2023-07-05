@@ -4,7 +4,6 @@ import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll';
 import ErrorBoundary from '../components/ErrorBoundary';
-import { pokemon } from './tempPokeArray';
 
 class App extends Component {
   constructor(){
@@ -16,10 +15,9 @@ class App extends Component {
   }
 
   componentDidMount(){
-    this.setState({pokemonList: pokemon})
-    // fetch('https://jsonplaceholder.typicode.com/users')
-    //   .then(response => response.json())
-    //   .then(pokemon => this.setState({ pokemonList: pokemon}))
+    fetch('https://pokeapi.co/api/v2/pokemon/')
+      .then(response => response.json())
+      .then(pokemon => this.setState({ pokemonList: pokemon.results}))
   }
 
   //Arrow function here makes sure that 'this' doesn't target the input, but targets App

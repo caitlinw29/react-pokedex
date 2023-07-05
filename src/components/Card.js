@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Card = ({ id, name, imageUrl }) => {
+const Card = ({ id, name }) => {
   return (
     <div className='tc bg-light-gray dib br3 pa3 ma2 grow bw2 shadow-5 pointer'>
-      <img src={imageUrl} alt={name}/>
+      <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id+1}.png`} alt={name}/>
       <div>
         <h2>{name}</h2>
       </div>

@@ -8,10 +8,9 @@ const CardList = ({ pokemonList }) => {
         pokemonList.map((pokemon, i) => {
           return (
             <Card 
-              key={pokemonList[i].id} 
-              id={pokemonList[i].id} 
+              key={i} 
+              id={i} 
               name={pokemonList[i].name}
-              imageUrl={pokemonList[i].imageUrl} 
             />
           );
         })
