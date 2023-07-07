@@ -29,7 +29,13 @@ class App extends Component {
   render() {
     const { pokemonList, searchfield } = this.state;
     const filteredPokemon = pokemonList.filter(pokemon => {
-      return pokemon.name.toLowerCase().includes(searchfield.toLowerCase());
+      return (
+        //name
+        pokemon.name.toLowerCase().includes(searchfield.toLowerCase())
+        ||
+        //id
+        pokemon.url.split('/')[pokemon.url.split('/').length-2].toLowerCase().includes(searchfield.toLowerCase())
+      );
     })
     return !pokemonList.length ? 
       <h1>Loading</h1> :
