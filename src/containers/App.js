@@ -14,11 +14,10 @@ class App extends Component {
     }
   }
 
-  componentDidMount(){
-    //limit to original 150 for speed (male and female nidoran push it up to 151)
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
-      .then(response => response.json())
-      .then(pokemon => this.setState({ pokemonList: pokemon.results}))
+  async componentDidMount(){
+    const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=386&offset=0');
+    const data = await response.json();
+    this.setState({ pokemonList: data.results});
   }
 
   //Arrow function here makes sure that 'this' doesn't target the input, but targets App
@@ -34,7 +33,7 @@ class App extends Component {
         pokemon.name.toLowerCase().includes(searchfield.toLowerCase())
         ||
         //id
-        pokemon.url.split('/')[pokemon.url.split('/').length-2].toLowerCase().includes(searchfield.toLowerCase())
+        pokemon.url.split('/')[pokemon.url.split('/').length-2].toLowerCase()===searchfield.toLowerCase()
       );
     })
     return !pokemonList.length ? 
