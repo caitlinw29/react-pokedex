@@ -15,8 +15,8 @@ class App extends Component {
   }
 
   componentDidMount(){
-    //limit to original 150 for speed
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=150')
+    //limit to original 150 for speed (male and female nidoran push it up to 151)
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
       .then(response => response.json())
       .then(pokemon => this.setState({ pokemonList: pokemon.results}))
   }
